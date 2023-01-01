@@ -66,7 +66,7 @@ config:
   exporters:
     logging: {}
     otlp:
-      endpoint: "skywalking-skywalking-helm-satellite.skywalking.svc.cluster.local:11800"
+      endpoint: "skywalking-skywalking-helm-oap.skywalking.svc.cluster.local:11800"
       tls:
         insecure: true
   extensions:
@@ -93,18 +93,7 @@ config:
             metrics_path: '/metrics'
             scrape_interval: 10s
             static_configs:
-              - targets: ["skywalking-skywalking-helm-satellite.skywalking.svc.cluster.local:1234"]
-            # kubernetes_sd_configs:
-            #   - role: pod
-            # relabel_configs:
-            #   - source_labels: [__meta_kubernetes_pod_container_name, __meta_kubernetes_pod_container_port_name]
-            #     action: keep
-            #     regex: oap;prometheus-port # @feature: so11y; reference the name of the metrics port
-              # - source_labels: []
-              #   target_label: component
-              #   replacement: oap
-    # zipkin:
-    #   endpoint: 0.0.0.0:9411
+              - targets: ["skywalking-skywalking-helm-oap.skywalking.svc.cluster.local:1234"]
   service:
     telemetry:
       logs:  #collector log level
