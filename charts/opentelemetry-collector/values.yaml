@@ -103,14 +103,12 @@ config:
         address: 0.0.0.0:8888
     extensions:
       - health_check
-      - memory_ballast
     pipelines:
       metrics:
         exporters:
           - logging
           - otlp
         processors:
-          - memory_limiter
           - batch
         receivers:
           - prometheus
