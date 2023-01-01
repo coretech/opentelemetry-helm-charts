@@ -104,6 +104,8 @@ config:
     #   endpoint: 0.0.0.0:9411
   service:
     telemetry:
+      logs:  #collector log level
+        level: "debug"
       metrics:
         address: 0.0.0.0:8888
     extensions:
