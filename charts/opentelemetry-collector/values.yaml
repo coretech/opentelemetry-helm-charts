@@ -6,7 +6,7 @@ nameOverride: ""
 fullnameOverride: ""
 
 # Valid values are "daemonset", "deployment", and "statefulset".
-mode: ""
+mode: "deployment"
 
 # Handles basic configuration of components that
 # also require k8s modifications to work correctly.
@@ -63,6 +63,8 @@ configMap:
 config:
   exporters:
     logging: {}
+    otlp:
+      endpoint: "skywalking-skywalking-helm-oap:11800"
   extensions:
     # The health_check extension is mandatory for this chart.
     # Without the health_check extension the collector will fail the readiness and liveliness probes.
@@ -91,11 +93,21 @@ config:
     prometheus:
       config:
         scrape_configs:
-          - job_name: opentelemetry-collector
-            scrape_interval: 10s
-            static_configs:
-              - targets:
-                  - ${MY_POD_IP}:8888
+          - job_name: 'skywalking-metrics'
+            metrics_path: '/metrics'
+            kubernetes_sd_configs:
+              - role: pod
+            relabel_configs:
+              - source_labels: [__meta_kubernetes_pod_container_name, __meta_kubernetes_pod_container_port_name]
+                action: keep
+                regex: oap;metrics # @feature: so11y; reference the name of the metrics port
+              - source_labels: []
+                target_label: component
+                replacement: oap
+              - source_labels: [__meta_kubernetes_pod_name]
+                target_label: host_name
+                regex: (.+)
+                replacement: $$1
     zipkin:
       endpoint: 0.0.0.0:9411
   service:
