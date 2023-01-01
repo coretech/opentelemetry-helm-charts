@@ -105,7 +105,7 @@ config:
   service:
     telemetry:
       logs:  #collector log level
-        level: "debug"
+        level: "trace"
       metrics:
         address: 0.0.0.0:8888
     extensions:
