@@ -95,7 +95,7 @@ config:
             scrape_interval: 10s
             static_configs:
               - targets: ["skywalking-skywalking-helm-oap.skywalking.svc.cluster.local:1234"]
-  
+
   service:
     telemetry:
       logs:  #collector log level
@@ -228,7 +228,7 @@ resources:
   limits:
     cpu: 256m
     memory: 512Mi
-x
+
 podAnnotations: {}
 
 podLabels: {}
