@@ -115,8 +115,6 @@ config:
         processors:
           - memory_limiter
           - batch
-        receivers:
-          - otlp
       metrics:
         exporters:
           - logging
@@ -125,7 +123,6 @@ config:
           - memory_limiter
           - batch
         receivers:
-          - otlp
           - prometheus
 
 image:
