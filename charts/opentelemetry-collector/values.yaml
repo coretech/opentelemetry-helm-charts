@@ -93,7 +93,7 @@ config:
             metrics_path: '/metrics'
             scrape_interval: 10s
             static_configs:
-              - targets: ["skywalking-skywalking-helm-oap.skywalking.svc.cluster:1234"]
+              - targets: ["skywalking-skywalking-helm-oap.skywalking.svc.cluster.local:1234"]
             # kubernetes_sd_configs:
             #   - role: pod
             # relabel_configs:
