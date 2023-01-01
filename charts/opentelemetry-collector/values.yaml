@@ -125,7 +125,6 @@ config:
           - memory_limiter
           - batch
         receivers:
-          - otlp
           - prometheus
       traces:
         exporters:
@@ -133,8 +132,6 @@ config:
         processors:
           - memory_limiter
           - batch
-        receivers:
-          - otlp
 
 image:
   # If you want to use the core image `otel/opentelemetry-collector`, you also need to change `command.name` value to `otelcol`.
