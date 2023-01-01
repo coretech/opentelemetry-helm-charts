@@ -66,7 +66,7 @@ config:
   exporters:
     logging: {}
     otlp:
-      endpoint: "skywalking-skywalking-helm-oap:11800"
+      endpoint: "skywalking-skywalking-helm-oap.skywalking.svc.cluster.local:11800"
   extensions:
     # The health_check extension is mandatory for this chart.
     # Without the health_check extension the collector will fail the readiness and liveliness probes.
@@ -81,9 +81,9 @@ config:
     otlp:
       protocols:
         grpc:
-          endpoint: open-telemetry-opentelemetry-collector:4317
+          endpoint: localhost:4317
         http:
-          endpoint: open-telemetry-opentelemetry-collector:4318
+          endpoint: localhost:4318
     prometheus:
       config:
         scrape_configs:
