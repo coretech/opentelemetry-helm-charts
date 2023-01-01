@@ -64,7 +64,6 @@ configMap:
 # For example, {{ REDACTED_EMAIL }} becomes {{` {{ REDACTED_EMAIL }} `}}.
 config:
   exporters:
-    logging: {}
     otlp:
       endpoint: "skywalking-skywalking-helm-oap.skywalking.svc.cluster.local:11800"
       tls:
