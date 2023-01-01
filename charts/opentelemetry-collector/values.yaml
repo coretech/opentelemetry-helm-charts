@@ -67,7 +67,7 @@ config:
     logging:
       logLevel: debug
     otlp:
-      endpoint: "10.43.239.36:11800"
+      endpoint: "skywalking-skywalking-helm-oap.skywalking.svc.cluster.local:11800"
       tls:
         insecure: true
   extensions:
@@ -91,10 +91,11 @@ config:
       config:
         scrape_configs:
           - job_name: 'skywalking-metrics'
-            metrics_path: '/metrics'
+            metrics_path: '/metric'
             scrape_interval: 10s
             static_configs:
               - targets: ["skywalking-skywalking-helm-oap.skywalking.svc.cluster.local:1234"]
+  
   service:
     telemetry:
       logs:  #collector log level
@@ -227,7 +228,7 @@ resources:
   limits:
     cpu: 256m
     memory: 512Mi
-
+x
 podAnnotations: {}
 
 podLabels: {}
