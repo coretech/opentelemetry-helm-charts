@@ -1,3 +1,5 @@
+# idt-values.yaml 
+# https://github.com/open-telemetry/opentelemetry-collector/blob/main/docs/security-best-practices.md
 # Default values for opentelemetry-collector.
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
@@ -76,14 +78,6 @@ config:
     # If set to null, will be overridden with values based on k8s resource limits
     memory_limiter: null
   receivers:
-    # jaeger:
-    #   protocols:
-    #     grpc:
-    #       endpoint: 0.0.0.0:14250
-    #     thrift_http:
-    #       endpoint: 0.0.0.0:14268
-    #     thrift_compact:
-    #       endpoint: 0.0.0.0:6831
     otlp:
       protocols:
         grpc:
@@ -144,8 +138,6 @@ config:
           - batch
         receivers:
           - otlp
-          - jaeger
-          - zipkin
 
 image:
   # If you want to use the core image `otel/opentelemetry-collector`, you also need to change `command.name` value to `otelcol`.
