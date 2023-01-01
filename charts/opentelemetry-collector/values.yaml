@@ -109,12 +109,6 @@ config:
       - health_check
       - memory_ballast
     pipelines:
-      logs:
-        exporters:
-          - logging
-        processors:
-          - memory_limiter
-          - batch
       metrics:
         exporters:
           - logging
