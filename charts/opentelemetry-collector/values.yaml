@@ -67,7 +67,7 @@ config:
     logging:
       logLevel: debug
     otlp:
-      endpoint: "skywalking-skywalking-helm-oap.skywalking.svc.cluster.local:11800"
+      endpoint: "10.43.239.36:11800"
       tls:
         insecure: true
   extensions:
